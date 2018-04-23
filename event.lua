@@ -37,7 +37,6 @@ function event:init(element)
 
 	-- Status
 	self.enabled = false
-	print("set enable")
 	-- Event handler
 	self.handler = {}
 
@@ -98,7 +97,7 @@ function event:_internalCallHandler(ev, ...)
 
 	-- First added are called first!
 	for i = 1, #e do
-		local v = e[i](self, ...)
+		local v = e[i](self.element, ...)
 		-- If event returns truth value, then done.
 		if v then return end
 	end

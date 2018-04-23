@@ -119,18 +119,25 @@ function layout:draw()
 	local blm, blma = love.graphics.getBlendMode()
 	love.graphics.push("all")
 	love.graphics.setCanvas(self.fbo)
+	love.graphics.clear(0, 0, 0, 0)
 	love.graphics.origin()
 	love.graphics.translate(self.drawx, self.drawy)
 
 	-- Iterate elements
 	local lastx, lasty = 0, 0
+	local drawx, drawy = self:getDisplayableDimensions()
 	for i = 1, #self.elements do
 		local elem = self.elements[i]
+		local lx, ly = elem.x - self.drawx, elem.y - self.drawy
 
-		-- Draw element
-		lastx, lasty = elem.x - lastx, elem.y - lasty
-		love.graphics.translate(lastx, lasty)
-		elem:_internalDraw()
+		-- Check if we should really draw this element by checking it's position.
+		-- This is probably hits up the CPU but will gives less stress to the GPU
+		if lx + elem.width >= 0 and ly + elem.height >= 0 and elem.x < drawx and elem.y < drawy then
+			-- Draw element
+			lastx, lasty = elem.x - lastx, elem.y - lasty
+			love.graphics.translate(lastx, lasty)
+			elem:_internalDraw()
+		end
 	end
 	-- Reset to 0,0
 	love.graphics.translate(-lastx, -lasty)

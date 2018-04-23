@@ -82,12 +82,20 @@ function element:_internalDraw()
 end
 
 --- Set element position.
+-- @function Shuwarin.Element:setPosition
 -- @tparam number x X position of element relative to current attached layout.
 -- @tparam number y Y position of element relative to current attached layout.
 function element:setPosition(x, y)
 	assert(type(x) == "number", "bad argument #1 to 'setPosition' (number expected)")
 	assert(type(y) == "number", "bad argument #2 to 'setPosition' (number expected)")
 	self.x, self.y = x, y
+end
+
+--- Get element dimensions.
+-- @function Shuwarin.Element:getDimensions
+-- @treturn {number,number} Width and height of the element.
+function element:getDimensions()
+	return self.width, self.height
 end
 
 return element

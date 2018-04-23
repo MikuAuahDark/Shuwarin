@@ -28,9 +28,16 @@ local Shuwarin = require(path..".main")
 assert(love._version >= "11.0", "Shuwarin requires LÖVE 11.0 or later")
 assert(love.graphics, "Shuwarin cannot function without love.graphics")
 
+-- Warning about FBO errors
+if love._version < "11.1" then
+	io.stderr:write("Warning: Shuwarin use Canvas. Please update your LOVE to 11.1\n")
+end
+
 Shuwarin.platform = require(path..".platform")
-Shuwarin.layout = require(path..".layout")
-Shuwarin.element = require(path..".element")
+
+Shuwarin.Layout = require(path..".layout")
+Shuwarin.Element = require(path..".element")
+Shuwarin.Style = require(path..".style")
 
 --- Create new layout.
 -- @function Shuwarin.newLayout
@@ -38,7 +45,7 @@ Shuwarin.element = require(path..".element")
 -- @tparam number height of the layout.
 -- @treturn Shuwarin.Layout object.
 function Shuwarin.newLayout(width, height)
-	return Shuwarin.layout(width, height)
+	return Shuwarin.Layout(width, height)
 end
 
 return Shuwarin

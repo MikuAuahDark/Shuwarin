@@ -48,12 +48,13 @@ function button:init(caption, width, height)
 	-- Enable events
 	self.event:setEnable(true)
 	-- Set style
-	self.style:setColor({0.7, 0.7, 0.7}, {0.9, 0.9, 0.9})
+	self.style:setColor({0.5, 0.5, 0.5}, {0.7, 0.7, 0.7})
 	-- Run update
 	self:update()
 end
 
 --- Button update (UI recalculation)
+-- @function Shuwarin.Elements.Button:update
 function button:update()
 	--print(self.event, self.event.enable)
 	if self.style.modified then
@@ -70,17 +71,23 @@ function button:update()
 			self.height = txh + self.padding * 2
 			self.cx, self.cy = self.padding, self.padding
 		end
+
+		-- Recreate text FBO
+		if self.textShadowFBO then self.textShadowFBO:release() end
+		self.textShadowFBO = self.style:createTextShadowFBO(self.caption)
 	end
 end
 
 --- Button draw
+-- @function Shuwarin.Elements.Button:draw
 function button:draw()
 	local active = self.event:getTouchPosition()
 
 	love.graphics.setColor(active and self.style.colorActive or self.style.color)
 	love.graphics.setFont(self.style.font)
 	love.graphics.rectangle("fill", 0, 0, self.width, self.height)
-	love.graphics.setColor(1, 1, 1)
+	self.style:drawTextShadow(self.textShadowFBO, self.cx, self.cy)
+	love.graphics.setColor(self.style.textColor)
 	love.graphics.print(self.caption, self.cx, self.cy)
 end
 

@@ -27,7 +27,7 @@ Architecture
 
 Unlike other GUI library, in here, everything is instance, including the layout. You add elements
 to the layout using existing available pre-written elements, or create your own. All elements can be
-styled similarly to CSS (border, shadow, padding, margin)
+styled similarly to CSS (border, shadow, color, ...)
 
 Documentation
 -------------
