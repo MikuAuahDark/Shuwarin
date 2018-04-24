@@ -106,6 +106,25 @@ function layout:getDisplayableDimensions()
 	return w, h
 end
 
+--- Retrieve free height position in layout.
+-- This is useful if you want to place your element relative to previous
+-- element position without dealing with manual position calculation.
+-- @function Shuwarin.Layout:getFreeHeightPosition
+-- @tparam number elemh Element height to be used as reference (or nil)
+-- @treturn number Free height position, or nil if there are no more.
+function layout:getFreeHeightPosition(elemh)
+	elemh = elemh or 0
+	local maxh = 0
+	-- Iterate all elements
+	for i = 1, #self.elements do
+		maxh = math.max(maxh, self.elements[i].y + self.elements[i].height)
+	end
+
+	-- If it exceeded the layout height then return nil
+	if maxh + elemh >= self.height then return nil end
+	return maxh
+end
+
 --- Update function.
 -- @function Shuwarin.Layout:update
 -- @tparam number deltaT Time passed since last frame in seconds.

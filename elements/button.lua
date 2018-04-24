@@ -30,9 +30,10 @@ local button = element:extend("Shuwarin.Elements.Button")
 
 --- Create new simple button.
 -- @function Shuwarin.Elements.Button:Button
--- @tparam string caption Text to be displayed for the button
--- @tparam number width Button width (or nil for auto)
--- @tparam number height Button height (or nil for auto)
+-- @tparam string caption Text to be displayed for the button.
+-- @tparam number width Button width (or nil for auto).
+-- @tparam number height Button height (or nil for auto).
+-- @treturn Shuwarin.Elements.Button Button object.
 function button:init(caption, width, height)
 	-- Caption
 	self.caption = caption

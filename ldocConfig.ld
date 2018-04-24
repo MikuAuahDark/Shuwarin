@@ -1,5 +1,6 @@
 project = "Shuwarin"
 description = "Dreaming LÖVE GUI Library"
+readme = "README.md"
 format = "markdown"
 not_luadoc = true
 file = {
@@ -12,4 +13,5 @@ file = {
 
 	-- Built-in elements
 	"elements/button.lua",
+	"elements/text.lua",
 }

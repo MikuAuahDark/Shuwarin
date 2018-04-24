@@ -160,7 +160,7 @@ end
 -- @tparam table color Shadow color, with 4 numbers inside (index 1, 2, 3, & 4). Defaults to black if none specified.
 function style:setBoxShadow(offx, offy, blur, color)
 	-- Disable
-	self.boxShadowEnabled = not(offx and offy and blur and color)
+	self.boxShadowEnabled = not(not(offx or offy or blur or color))
 	self.boxShadowRadius = (blur or 0)
 	self.boxShadowOffset = {offx or 0, offy or 0}
 	self.boxShadowColor = color or {0, 0, 0, 1}
@@ -176,7 +176,7 @@ end
 -- @tparam table color Shadow color, with 4 numbers inside (index 1, 2, 3, & 4). Defaults to black if none specified.
 function style:setTextShadow(offx, offy, blur, color)
 	-- Disable
-	self.textShadowEnabled = not(offx and offy and blur and color)
+	self.textShadowEnabled = not(not(offx or offy or blur or color))
 	self.textShadowRadius = (blur or 0)
 	self.textShadowOffset = {offx or 0, offy or 0}
 	self.textShadowColor = color or {0, 0, 0, 1}
@@ -227,7 +227,7 @@ function style:updateShadow()
 
 				love.graphics.setShader(style.blurShader)
 				love.graphics.setColor(1, 1, 1, 1)
-				for i = 1, self.boxShadowRadius do
+				for i = 1, self.boxShadowRadius, 0.5 do
 					local radius = self.boxShadowRadius - i
 
 					-- Horizontal blur
@@ -285,7 +285,7 @@ function style:createTextShadowFBO(text)
 			love.graphics.setShader(style.blurShader)
 
 			-- FBO switching hell again :P
-			for i = 1, self.textShadowRadius do
+			for i = 1, self.textShadowRadius, 0.5 do
 				local radius = self.textShadowRadius - i
 
 				-- Horizontal blur
@@ -330,9 +330,14 @@ end
 --- Internal function to draw style below element.
 -- @function Shuwarin.Style:drawBelow
 function style:drawBelow()
-	if self.borderColor[4] == 0 then return end
-	love.graphics.setColor(self.borderColor)
-	love.graphics.rectangle("fill", 0, 0, self.element.width, self.element.height)
+	if (self.borderColor[4] or 1) > 0 and self.borderWidth > 0 then
+		-- Draw line
+		local a = love.graphics.getLineWidth()
+		love.graphics.setColor(self.borderColor)
+		love.graphics.setLineWidth(self.borderWidth)
+		love.graphics.rectangle("line", 0, 0, self.element.width, self.element.height)
+		love.graphics.setLineWidth(a)
+	end
 
 	if self.boxShadowFBO then
 		-- Calculate draw position
