@@ -70,6 +70,7 @@ end
 function layout:addElement(element)
 	self.elements[#self.elements + 1] = element
 	element.layout = self
+	return element:update(0)
 end
 
 --- Remove element.

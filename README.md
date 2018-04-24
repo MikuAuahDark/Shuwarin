@@ -36,7 +36,7 @@ To generate documentation, you need [LDoc](https://github.com/stevedonovan/LDoc)
 `ldoc -d docs/. -c ldocConfig.ld .` to generate the documentation.
 
 Example
-------
+-------
 
 ```lua
 local love = require("love")
@@ -44,8 +44,6 @@ local Shuwarin = require("shuwarin")
 local button = require("shuwarin.elements.button")
 local text = require("shuwarin.elements.text")
 local layout, mybutton, mytext
-
-love.window.setTitle("Shuwarin☆Drea~min")
 
 local placeholderText = [[
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -69,8 +67,6 @@ function love.load()
 	mytext.style:setBoxShadow(1, 1, 2, {0, 0, 1, 0.8})
 	-- Add to layout
 	layout:addElement(mytext)
-	-- Force update element (recalculate)
-	mytext:update()
 	-- Create new button with caption "Test Button"
 	mybutton = button("Test Button")
 	-- Set X position to 25, and Y position to below text element added before + 10px below
