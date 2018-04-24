@@ -19,9 +19,9 @@
 -- 3. This notice may not be removed or altered from any source distribution.
 
 --- Simple button.
+-- @module Shuwarin.Elements.Button
 -- This is very simple button implementation. You can use this for reference
--- of creating your own button.
--- @type Shuwarin.Elements.Button
+-- of creating your own button. This class derived from @{Shuwarin.Element}!
 
 local path = string.sub(..., 1, string.len(...) - string.len(".elements.button"))
 local love = require("love")

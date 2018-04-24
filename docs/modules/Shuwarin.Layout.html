@@ -1,0 +1,473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Shuwarin</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Shuwarin.html">Shuwarin</a></li>
+  <li><strong>Shuwarin.Layout</strong></li>
+  <li><a href="../modules/Shuwarin.Element.html">Shuwarin.Element</a></li>
+  <li><a href="../modules/Shuwarin.Event.html">Shuwarin.Event</a></li>
+  <li><a href="../modules/Shuwarin.Style.html">Shuwarin.Style</a></li>
+  <li><a href="../modules/Shuwarin.Platform.html">Shuwarin.Platform</a></li>
+  <li><a href="../modules/Shuwarin.Elements.Button.html">Shuwarin.Elements.Button</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Shuwarin.Layout</code></h1>
+<p>Layout class.</p>
+<p> Layout is the thing you need to use for rendering and GUI event handling.
+ Shuwarin doesn't override any LOVE event handlers to keep compatibility
+ with custom <a href="https://love2d.org/wiki/love.run"><code>love.run</code></a> function, and
+ to allow fast state switching by just discarding the layout object.</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">-- Create new layout with 800x600 size
+layout = Shuwarin.Layout(800, 600)
+</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:Layout">Shuwarin.Layout:Layout (width, height)</a></td>
+	<td class="summary">Create new layout.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:addElement">Shuwarin.Layout:addElement (element)</a></td>
+	<td class="summary">Add new element.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:removeElement">Shuwarin.Layout:removeElement (element)</a></td>
+	<td class="summary">Remove element.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:getDisplayableDimensions">Shuwarin.Layout:getDisplayableDimensions ()</a></td>
+	<td class="summary">Retrieve actual layout display resolution (subtract by scroll object)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:update">Shuwarin.Layout:update (deltaT)</a></td>
+	<td class="summary">Update function.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:draw">Shuwarin.Layout:draw ()</a></td>
+	<td class="summary">Draw function.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:_internalLocalizeTouchPosition">Shuwarin.Layout:_internalLocalizeTouchPosition (x, y, oor)</a></td>
+	<td class="summary">Internal function to translate touch position.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:_internalGetElement">Shuwarin.Layout:_internalGetElement ()</a></td>
+	<td class="summary">Internal function to find suitable element for keypress event handling.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:_internalGetElementByPosition">Shuwarin.Layout:_internalGetElementByPosition ()</a></td>
+	<td class="summary">Internal function to find suitable element by position in layout.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:touchPressed">Shuwarin.Layout:touchPressed (id, x, y)</a></td>
+	<td class="summary">Touch pressed event.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:touchMoved">Shuwarin.Layout:touchMoved (id, x, y)</a></td>
+	<td class="summary">Touch moved event.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:touchReleased">Shuwarin.Layout:touchReleased (id)</a></td>
+	<td class="summary">Touch released event.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:keyPressed">Shuwarin.Layout:keyPressed (key)</a></td>
+	<td class="summary">Key pressed event.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:keyReleased">Shuwarin.Layout:keyReleased (key)</a></td>
+	<td class="summary">Key released event.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Layout:textInput">Shuwarin.Layout:textInput (char)</a></td>
+	<td class="summary">Text input event.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Shuwarin.Layout:Layout"></a>
+    <strong>Shuwarin.Layout:Layout (width, height)</strong>
+    </dt>
+    <dd>
+    Create new layout.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">width</span>
+            <span class="types"><span class="type">number</span></span>
+         of the layout.
+        </li>
+        <li><span class="parameter">height</span>
+            <span class="types"><span class="type">number</span></span>
+         of the layout.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">Shuwarin.Layout</span></span>
+        object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Layout:addElement"></a>
+    <strong>Shuwarin.Layout:addElement (element)</strong>
+    </dt>
+    <dd>
+    Add new element.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">element</span>
+            <span class="types"><span class="type">Shuwarin.Element</span></span>
+         element to be added.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Layout:removeElement"></a>
+    <strong>Shuwarin.Layout:removeElement (element)</strong>
+    </dt>
+    <dd>
+    Remove element.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">element</span>
+            <span class="types"><span class="type">Shuwarin.Element</span></span>
+         to be removed.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if element successfully removed, false otherwise.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Layout:getDisplayableDimensions"></a>
+    <strong>Shuwarin.Layout:getDisplayableDimensions ()</strong>
+    </dt>
+    <dd>
+    Retrieve actual layout display resolution (subtract by scroll object)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{number,number}</span></span>
+        Displayable dimensions.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Layout:update"></a>
+    <strong>Shuwarin.Layout:update (deltaT)</strong>
+    </dt>
+    <dd>
+    Update function.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">deltaT</span>
+            <span class="types"><span class="type">number</span></span>
+         Time passed since last frame in seconds.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Layout:draw"></a>
+    <strong>Shuwarin.Layout:draw ()</strong>
+    </dt>
+    <dd>
+    Draw function.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Layout:_internalLocalizeTouchPosition"></a>
+    <strong>Shuwarin.Layout:_internalLocalizeTouchPosition (x, y, oor)</strong>
+    </dt>
+    <dd>
+    Internal function to translate touch position.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         Touch X position.
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         Touch Y position.
+        </li>
+        <li><span class="parameter">oor</span>
+            <span class="types"><span class="type">boolean</span></span>
+         Always return value even if position is out-of-range?
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{number,number}</span></span>
+        Localized touch position, or nil if touch is outside layout.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Layout:_internalGetElement"></a>
+    <strong>Shuwarin.Layout:_internalGetElement ()</strong>
+    </dt>
+    <dd>
+    Internal function to find suitable element for keypress event handling.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Layout:_internalGetElementByPosition"></a>
+    <strong>Shuwarin.Layout:_internalGetElementByPosition ()</strong>
+    </dt>
+    <dd>
+    Internal function to find suitable element by position in layout.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Layout:touchPressed"></a>
+    <strong>Shuwarin.Layout:touchPressed (id, x, y)</strong>
+    </dt>
+    <dd>
+    Touch pressed event.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         Touch identifier (or nil for mouse press)
+        </li>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         X position
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         Y position
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if event is handled, false otherwise.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Layout:touchMoved"></a>
+    <strong>Shuwarin.Layout:touchMoved (id, x, y)</strong>
+    </dt>
+    <dd>
+    Touch moved event.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         Touch identifier (or nil for mouse press)
+        </li>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         X position
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         Y position
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if event is handled, false otherwise.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Layout:touchReleased"></a>
+    <strong>Shuwarin.Layout:touchReleased (id)</strong>
+    </dt>
+    <dd>
+    Touch released event.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         Touch identifier (or nil for mouse press).
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if event is handled, false otherwise.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Layout:keyPressed"></a>
+    <strong>Shuwarin.Layout:keyPressed (key)</strong>
+    </dt>
+    <dd>
+    Key pressed event.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Key pressed.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if event is handled, false otherwise.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Layout:keyReleased"></a>
+    <strong>Shuwarin.Layout:keyReleased (key)</strong>
+    </dt>
+    <dd>
+    Key released event.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Key released.
+        </li>
+    </ul>
+
+    <h

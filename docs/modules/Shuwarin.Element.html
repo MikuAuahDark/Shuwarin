@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Shuwarin</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Shuwarin.html">Shuwarin</a></li>
+  <li><a href="../modules/Shuwarin.Layout.html">Shuwarin.Layout</a></li>
+  <li><strong>Shuwarin.Element</strong></li>
+  <li><a href="../modules/Shuwarin.Event.html">Shuwarin.Event</a></li>
+  <li><a href="../modules/Shuwarin.Style.html">Shuwarin.Style</a></li>
+  <li><a href="../modules/Shuwarin.Platform.html">Shuwarin.Platform</a></li>
+  <li><a href="../modules/Shuwarin.Elements.Button.html">Shuwarin.Elements.Button</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Shuwarin.Element</code></h1>
+<p>Base element class.</p>
+<p> Element, can be called widgets is the base objects which shows the actual
+ UI in Shuwarin. All elements like button, text input, checkbox, and other
+ are derived from this class. This class can't be constructed directly.</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Element:update">Shuwarin.Element:update (deltaT)</a></td>
+	<td class="summary">Update element state.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Element:_internalUpdate">Shuwarin.Element:_internalUpdate (deltaT)</a></td>
+	<td class="summary">Internally update element state.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Element:draw">Shuwarin.Element:draw ()</a></td>
+	<td class="summary">Draw current element.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Element:_internalDraw">Shuwarin.Element:_internalDraw ()</a></td>
+	<td class="summary">Internally draw current element.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Element:setPosition">Shuwarin.Element:setPosition (x, y)</a></td>
+	<td class="summary">Set element position.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Element:getDimensions">Shuwarin.Element:getDimensions ()</a></td>
+	<td class="summary">Get element dimensions.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Shuwarin.Element:update"></a>
+    <strong>Shuwarin.Element:update (deltaT)</strong>
+    </dt>
+    <dd>
+    Update element state.
+ You should override this function when defining your own drawing function.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">deltaT</span>
+            <span class="types"><span class="type">number</span></span>
+         Time passed since last frame in seconds.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Element:_internalUpdate"></a>
+    <strong>Shuwarin.Element:_internalUpdate (deltaT)</strong>
+    </dt>
+    <dd>
+    Internally update element state.
+ This is wrong method that you should override. Override Shuwarin.Element:update instead!
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">deltaT</span>
+            <span class="types"><span class="type">number</span></span>
+         Time passed since last frame in seconds.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Element:draw"></a>
+    <strong>Shuwarin.Element:draw ()</strong>
+    </dt>
+    <dd>
+    Draw current element.
+ You should override this function when defining your own drawing function.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Element:_internalDraw"></a>
+    <strong>Shuwarin.Element:_internalDraw ()</strong>
+    </dt>
+    <dd>
+    Internally draw current element.
+ You should not override this function as this function ensure style ordering.
+ Only override if you really know what are you doing.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Element:setPosition"></a>
+    <strong>Shuwarin.Element:setPosition (x, y)</strong>
+    </dt>
+    <dd>
+    Set element position.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         X position of element relative to current attached layout.
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         Y position of element relative to current attached layout.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Element:getDimensions"></a>
+    <strong>Shuwarin.Element:getDimensions ()</strong>
+    </dt>
+    <dd>
+    Get element dimensions.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{number,number}</span></span>
+        Width and height of the element.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2018-04-24 12:43:01 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Shuwarin</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Shuwarin.html">Shuwarin</a></li>
+  <li><a href="../modules/Shuwarin.Layout.html">Shuwarin.Layout</a></li>
+  <li><a href="../modules/Shuwarin.Element.html">Shuwarin.Element</a></li>
+  <li><a href="../modules/Shuwarin.Event.html">Shuwarin.Event</a></li>
+  <li><strong>Shuwarin.Style</strong></li>
+  <li><a href="../modules/Shuwarin.Platform.html">Shuwarin.Platform</a></li>
+  <li><a href="../modules/Shuwarin.Elements.Button.html">Shuwarin.Elements.Button</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Shuwarin.Style</code></h1>
+<p>Element styling.</p>
+<p> Style is basically alters how your element look like. You can change it's
+ border, font, colors, ...</p>
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">-- Modify element style: Set background color to red.
+-- Shuwarin use color in 0..1 range.
+element.style:setBackgroundColor({1, 0, 0, 1})
+</pre></li>
+        <li><pre class="example">-- Modify element style: Add box shadow and blur to the shadow.
+-- The shadow will be placed with offset 1px horizontal and 2px vertical
+-- and with 3px blur strength. Also set the color to black with 90% alpha.
+element.style:setBoxShadow(1, 2, 3, {0, 0, 0, 0.9})
+</pre></li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Style:Style">Shuwarin.Style:Style (element)</a></td>
+	<td class="summary">Create new style.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Style:setFont">Shuwarin.Style:setFont (font)</a></td>
+	<td class="summary">Set the style current font.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Style:setBorder">Shuwarin.Style:setBorder (width, color, hcolor, acolor)</a></td>
+	<td class="summary">Set border properties.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Style:setColor">Shuwarin.Style:setColor (color, hcolor, acolor)</a></td>
+	<td class="summary">Set current style color.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Style:setBackgroundColor">Shuwarin.Style:setBackgroundColor (color)</a></td>
+	<td class="summary">Set style background color.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Style:setBoxShadow">Shuwarin.Style:setBoxShadow (offx, offy, blur, color)</a></td>
+	<td class="summary">Set box shadow properties.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Style:setTextShadow">Shuwarin.Style:setTextShadow (offx, offy, blur, color)</a></td>
+	<td class="summary">Set text shadow properties.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Style:update">Shuwarin.Style:update ()</a></td>
+	<td class="summary">Internal function to update modified flags.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Style:updateShadow">Shuwarin.Style:updateShadow ()</a></td>
+	<td class="summary">Internal function to add shadow below element</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Style:createTextShadowFBO">Shuwarin.Style:createTextShadowFBO (text)</a></td>
+	<td class="summary">Create new FBO containing text shadow based on style settings.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Style:drawTextShadow">Shuwarin.Style:drawTextShadow (fbo, x, y)</a></td>
+	<td class="summary">Draw text shadow in specified text coordinate.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Style:drawBelow">Shuwarin.Style:drawBelow ()</a></td>
+	<td class="summary">Internal function to draw style below element.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Style:drawAbove">Shuwarin.Style:drawAbove ()</a></td>
+	<td class="summary">Internal function to draw style above element.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Shuwarin.Style:Style"></a>
+    <strong>Shuwarin.Style:Style (element)</strong>
+    </dt>
+    <dd>
+    Create new style.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">element</span>
+            <span class="types"><span class="type">Shuwarin.Element</span></span>
+         Element to attach.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">Shuwarin.Style</span></span>
+        Style object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Style:setFont"></a>
+    <strong>Shuwarin.Style:setFont (font)</strong>
+    </dt>
+    <dd>
+    Set the style current font.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">font</span>
+         New LOVE font object.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Previous set font.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Style:setBorder"></a>
+    <strong>Shuwarin.Style:setBorder (width, color, hcolor, acolor)</strong>
+    </dt>
+    <dd>
+    Set border properties.
+ Calling this function without any arguments disables border.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">width</span>
+            <span class="types"><span class="type">number</span></span>
+         Border thickness.
+        </li>
+        <li><span class="parameter">color</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         Border color.
+        </li>
+        <li><span class="parameter">hcolor</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         Border hover color.
+        </li>
+        <li><span class="parameter">acolor</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         Border active color.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Style:setColor"></a>
+    <strong>Shuwarin.Style:setColor (color, hcolor, acolor)</strong>
+    </dt>
+    <dd>
+    Set current style color.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         Style color.
+        </li>
+        <li><span class="parameter">hcolor</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         Style hover color.
+        </li>
+        <li><span class="parameter">acolor</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         Style active color.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Style:setBackgroundColor"></a>
+    <strong>Shuwarin.Style:setBackgroundColor (color)</strong>
+    </dt>
+    <dd>
+    Set style background color.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         Style background color.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Style:setBoxShadow"></a>
+    <strong>Shuwarin.Style:setBoxShadow (offx, offy, blur, color)</strong>
+    </dt>
+    <dd>
+    Set box shadow properties.
+ Calling this function without parameters disables box shadow completely.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">offx</span>
+            <span class="types"><span class="type">number</span></span>
+         Offset X position of shadow.
+        </li>
+        <li><span class="parameter">offy</span>
+            <span class="types"><span class="type">number</span></span>
+         Offset Y position of shadow.
+        </li>
+        <li><span class="parameter">blur</span>
+            <span class="types"><span class="type">number</span></span>
+         Blur radius in pixels. Set to 0 to disable blur.
+        </li>
+        <li><span class="parameter">color</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         Shadow color, with 4 numbers inside (index 1, 2, 3, &amp; 4). Defaults to black if none specified.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Style:setTextShadow"></a>
+    <strong>Shuwarin.Style:setTextShadow (offx, offy, blur, color)</strong>
+    </dt>
+    <dd>
+    Set text shadow properties.
+ Calling this function without parameters disables text shadow completely.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">offx</span>
+            <span class="types"><span class="type">number</span></span>
+         Offset X position of shadow.
+        </li>
+        <li><span class="parameter">offy</span>
+            <span class="types"><span class="type">number</span></span>
+         Offset Y position of shadow.
+        </li>
+        <li><span class="parameter">blur</span>
+            <span class="types"><span class="type">number</span></span>
+         Blur radius in pixels. Set to 0 to disable blur.
+        </li>
+        <li><span class="parameter">color</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         Shadow color, with 4 numbers inside (index 1, 2, 3, &amp; 4). Defaults to black if none specified.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Style:update"></a>
+    <strong>Shuwarin.Style:update ()</strong>
+    </dt>
+    <dd>
+    Internal function to update modified flags.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Style:updateShadow"></a>
+    <strong>Shuwarin.Style:updateShadow ()</strong>
+    </dt>
+    <dd>
+    Internal function to add shadow below element
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Style:createTextShadowFBO"></a>
+    <strong>Shuwarin.Style:createTextShadowFBO (text)</strong>
+    </dt>
+    <dd>
+    Create new FBO containing text shadow based on style settings.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Text to draw.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Canvas object containing the blurred white text, or nil if text shadow is not enabled.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Style:drawTextShadow"></a>
+    <strong>Shuwarin.Style:drawTextShadow (fbo, x, y)</strong>
+    </dt>
+    <dd>
+    Draw text shadow in specified text coordinate.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fbo</span>
+         Previous FBO created with <a href="../modules/Shuwarin.Style.html#Shuwarin.Style:createTextShadowFBO">Shuwarin.Style:createTextShadowFBO</a>.
+        </li>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         Text X position.
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         Text Y position.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Style:drawBelow"></a>
+    <strong>Shuwarin.Style:drawBelow ()</strong>
+    </dt>
+    <dd>
+    Internal function to draw style below element.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Style:drawAbove"></a>
+    <strong>Shuwarin.Style:drawAbove ()</strong>
+    </dt>
+    <dd>
+    Internal function to draw style above element.
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2018-04-24 12:43:01 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

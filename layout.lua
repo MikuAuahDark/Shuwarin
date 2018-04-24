@@ -19,11 +19,14 @@
 -- 3. This notice may not be removed or altered from any source distribution.
 
 --- Layout class.
+-- @module Shuwarin.Layout
 -- Layout is the thing you need to use for rendering and GUI event handling.
 -- Shuwarin doesn't override any LOVE event handlers to keep compatibility
--- with custom `love.run` function, and to allow fast state switching
--- by just discarding the layout object.
--- @module Shuwarin.Layout
+-- with custom [`love.run`](https://love2d.org/wiki/love.run) function, and
+-- to allow fast state switching by just discarding the layout object.
+-- @usage
+-- -- Create new layout with 800x600 size
+-- layout = Shuwarin.Layout(800, 600)
 
 local path = string.sub(..., 1, string.len(...) - string.len(".layout"))
 local love = require("love")

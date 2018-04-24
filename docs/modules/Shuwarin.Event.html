@@ -1,0 +1,475 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Shuwarin</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Shuwarin.html">Shuwarin</a></li>
+  <li><a href="../modules/Shuwarin.Layout.html">Shuwarin.Layout</a></li>
+  <li><a href="../modules/Shuwarin.Element.html">Shuwarin.Element</a></li>
+  <li><strong>Shuwarin.Event</strong></li>
+  <li><a href="../modules/Shuwarin.Style.html">Shuwarin.Style</a></li>
+  <li><a href="../modules/Shuwarin.Platform.html">Shuwarin.Platform</a></li>
+  <li><a href="../modules/Shuwarin.Elements.Button.html">Shuwarin.Elements.Button</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Shuwarin.Event</code></h1>
+<p>Event handling mechanism</p>
+<p> Events are needed to handle user input. This can range from touch events to
+ keyboard input (textinput). For touch position, the position is always reported
+ relative to current element.</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Event:Event">Shuwarin.Event:Event (element)</a></td>
+	<td class="summary">Create new event handler.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Event:addHandler">Shuwarin.Event:addHandler (ev, func)</a></td>
+	<td class="summary">Add new event handler.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Event:removeHandler">Shuwarin.Event:removeHandler (ev, func)</a></td>
+	<td class="summary">Remove event handler.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Event:_internalCallHandler">Shuwarin.Event:_internalCallHandler (ev)</a></td>
+	<td class="summary">Internal function to call specificed event handler.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Event:touchPressed">Shuwarin.Event:touchPressed (x, y, dx, dy)</a></td>
+	<td class="summary">Touch pressed callback function.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Event:touchMoved">Shuwarin.Event:touchMoved (x, y, dx, dy)</a></td>
+	<td class="summary">Touch moved callback function.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Event:touchReleased">Shuwarin.Event:touchReleased ()</a></td>
+	<td class="summary">Touch released callback function.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Event:getTouchPosition">Shuwarin.Event:getTouchPosition ()</a></td>
+	<td class="summary">Retrieve touch position.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Event:keyPressed">Shuwarin.Event:keyPressed (key)</a></td>
+	<td class="summary">Keyboard pressed callback.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Event:keyReleased">Shuwarin.Event:keyReleased (key)</a></td>
+	<td class="summary">Keyboard released callback.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Event:textInput">Shuwarin.Event:textInput (char)</a></td>
+	<td class="summary">Textinput callback.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Event:setKeyboardGrab">Shuwarin.Event:setKeyboardGrab (grab)</a></td>
+	<td class="summary">Set keyboard input grab.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Event:setTextInputGrab">Shuwarin.Event:setTextInputGrab (grab)</a></td>
+	<td class="summary">Set text input grab.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Event:setEnable">Shuwarin.Event:setEnable (enable)</a></td>
+	<td class="summary">Set event handling status.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Shuwarin.Event:Event"></a>
+    <strong>Shuwarin.Event:Event (element)</strong>
+    </dt>
+    <dd>
+    Create new event handler.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">element</span>
+            <span class="types"><span class="type">Shuwarin.Element</span></span>
+         Element to attach.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">Shuwarin.Event</span></span>
+        New event handler object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Event:addHandler"></a>
+    <strong>Shuwarin.Event:addHandler (ev, func)</strong>
+    </dt>
+    <dd>
+    Add new event handler.
+ Event handler function returns true if the event should not forwarded to next
+ event handler, or false if the event should be forwarded to next event handler.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ev</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Event name to handle.
+        </li>
+        <li><span class="parameter">func</span>
+            <span class="types"><span class="type">function</span></span>
+         Event handler function callback.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Event:removeHandler"></a>
+    <strong>Shuwarin.Event:removeHandler (ev, func)</strong>
+    </dt>
+    <dd>
+    Remove event handler.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ev</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Event name to handle.
+        </li>
+        <li><span class="parameter">func</span>
+            <span class="types"><span class="type">function</span></span>
+         Event handler function callback to remove.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if success, false otherwise (no event found).
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Event:_internalCallHandler"></a>
+    <strong>Shuwarin.Event:_internalCallHandler (ev)</strong>
+    </dt>
+    <dd>
+    Internal function to call specificed event handler.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ev</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Event name to call all of it's handler.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Event:touchPressed"></a>
+    <strong>Shuwarin.Event:touchPressed (x, y, dx, dy)</strong>
+    </dt>
+    <dd>
+    Touch pressed callback function.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         X position.
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         Y position.
+        </li>
+        <li><span class="parameter">dx</span>
+            <span class="types"><span class="type">number</span></span>
+         delta-x position from initial click.
+        </li>
+        <li><span class="parameter">dy</span>
+            <span class="types"><span class="type">number</span></span>
+         delta-y position from initial click.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Event:touchMoved"></a>
+    <strong>Shuwarin.Event:touchMoved (x, y, dx, dy)</strong>
+    </dt>
+    <dd>
+    Touch moved callback function.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         X position.
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         Y position.
+        </li>
+        <li><span class="parameter">dx</span>
+            <span class="types"><span class="type">number</span></span>
+         delta-x position from initial click.
+        </li>
+        <li><span class="parameter">dy</span>
+            <span class="types"><span class="type">number</span></span>
+         delta-y position from initial click.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Event:touchReleased"></a>
+    <strong>Shuwarin.Event:touchReleased ()</strong>
+    </dt>
+    <dd>
+    Touch released callback function.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Event:getTouchPosition"></a>
+    <strong>Shuwarin.Event:getTouchPosition ()</strong>
+    </dt>
+    <dd>
+    Retrieve touch position.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{number,number}</span></span>
+        Touch position, or nil if no touches.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Event:keyPressed"></a>
+    <strong>Shuwarin.Event:keyPressed (key)</strong>
+    </dt>
+    <dd>
+    Keyboard pressed callback.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Pressed key.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Event:keyReleased"></a>
+    <strong>Shuwarin.Event:keyReleased (key)</strong>
+    </dt>
+    <dd>
+    Keyboard released callback.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Released key.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Event:textInput"></a>
+    <strong>Shuwarin.Event:textInput (char)</strong>
+    </dt>
+    <dd>
+    Textinput callback.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">char</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Character pressed.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Event:setKeyboardGrab"></a>
+    <strong>Shuwarin.Event:setKeyboardGrab (grab)</strong>
+    </dt>
+    <dd>
+    Set keyboard input grab.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">grab</span>
+            <span class="types"><span class="type">boolean</span></span>
+         Grab status.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Event:setTextInputGrab"></a>
+    <strong>Shuwarin.Event:setTextInputGrab (grab)</strong>
+    </dt>
+    <dd>
+    Set text input grab.
+ This function does nothing if keyboard input grab is
+ not enabled!
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">grab</span>
+            <span class="types"><span class="type">boolean</span></span>
+         Grab status.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Event:setEnable"></a>
+    <strong>Shuwarin.Event:setEnable (enable)</strong>
+    </dt>
+    <dd>
+    Set event handling status.
+ This automatically release all keypress and touch if false is specified.
+ This function also disable keyboard input grab.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">enable</span>
+            <span class="types"><span class="type">boolean</span></span>
+         Enable event handling.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2018-04-24 12:43:01 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

@@ -22,6 +22,15 @@
 -- @module Shuwarin.Style
 -- Style is basically alters how your element look like. You can change it's
 -- border, font, colors, ...
+-- @usage
+-- -- Modify element style: Set background color to red.
+-- -- Shuwarin use color in 0..1 range.
+-- element.style:setBackgroundColor({1, 0, 0, 1})
+-- @usage
+-- -- Modify element style: Add box shadow and blur to the shadow.
+-- -- The shadow will be placed with offset 1px horizontal and 2px vertical
+-- -- and with 3px blur strength. Also set the color to black with 90% alpha.
+-- element.style:setBoxShadow(1, 2, 3, {0, 0, 0, 0.9})
 
 local path = string.sub(..., 1, string.len(...) - string.len(".style"))
 local love = require("love")
@@ -35,12 +44,17 @@ style.blurShader = love.graphics.newShader [[
 extern number dirx;
 extern number diry;
 
+vec4 texWhite(Image tex, vec2 uv)
+{
+	return vec4(1.0, 1.0, 1.0, Texel(tex, uv).a);
+}
+
 vec4 blur5(Image image, vec2 uv, vec2 resolution, vec2 direction) {
 	vec4 color = vec4(0.0);
 	vec2 off1 = vec2(1.3333333333333333) * direction;
-	color += Texel(image, uv) * 0.29411764705882354;
-	color += Texel(image, uv + (off1 / resolution)) * 0.35294117647058826;
-	color += Texel(image, uv - (off1 / resolution)) * 0.35294117647058826;
+	color += texWhite(image, uv) * 0.29411764705882354;
+	color += texWhite(image, uv + (off1 / resolution)) * 0.35294117647058826;
+	color += texWhite(image, uv - (off1 / resolution)) * 0.35294117647058826;
 	return color;
 }
 
@@ -66,14 +80,11 @@ function style:init(element)
 	-- Font
 	self.font = Shuwarin.platform.getFont()
 
-	-- Background
-	self.backgroundColor = {0, 0, 0}
-	self.backgroundColorActive = nil
-
-	-- Front color. This is left to element to implement how it works.
+	-- Style color. This is left to element to implement how it works.
 	self.color = {1, 1, 1}
 	self.colorActive = {1, 1, 1}
 	self.textColor = {1, 1, 1}
+	self.backgroundColor = {0, 0, 0}
 
 	-- Shadow
 	self.boxShadowEnabled = false
@@ -129,6 +140,14 @@ end
 function style:setColor(color, acolor)
 	self.color = assert(type(color) == "table" and color, "bad argument #1 to 'setColor' (table expected)")
 	self.colorActive = acolor
+	self.modified = true
+end
+
+--- Set style background color.
+-- @function Shuwarin.Style:setBackgroundColor
+-- @tparam table color Style background color.
+function style:setBackgroundColor(color)
+	self.backgroundColor = assert(type(color) == "table" and color, "bad argument #1 to 'setBackgroundColor' (table expected)")
 	self.modified = true
 end
 
@@ -199,12 +218,15 @@ function style:updateShadow()
 			love.graphics.clear(0, 0, 0, 0)
 			love.graphics.origin()
 			love.graphics.setColor(1, 1, 1, 1)
-			love.graphics.rectangle("fill", self.boxShadowRadius * 5, self.boxShadowRadius * 5, ex, ey)
+			love.graphics.translate(self.boxShadowRadius * 5, self.boxShadowRadius * 5)
+			self.element:draw()
+			love.graphics.translate(self.boxShadowRadius * -5, self.boxShadowRadius * -5)
 			if self.boxShadowRadius > 0 then
 				-- This is would be bit, uh, FBO switching hell.
 				local fbo2 = love.graphics.newCanvas(ex + 10 * self.boxShadowRadius, ey + 10 * self.boxShadowRadius)
 
 				love.graphics.setShader(style.blurShader)
+				love.graphics.setColor(1, 1, 1, 1)
 				for i = 1, self.boxShadowRadius do
 					local radius = self.boxShadowRadius - i
 

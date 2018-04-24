@@ -33,4 +33,4 @@ Documentation
 -------------
 
 To generate documentation, you need [LDoc](https://github.com/stevedonovan/LDoc) then execute
-`ldoc -d doc/. -c ldocConfig.ld` to generate the documentation.
+`ldoc -d docs/. -c ldocConfig.ld .` to generate the documentation.

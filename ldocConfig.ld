@@ -8,5 +8,8 @@ file = {
 	"element.lua",
 	"event.lua",
 	"style.lua",
-	"platform.lua"
+	"platform.lua",
+
+	-- Built-in elements
+	"elements/button.lua",
 }
