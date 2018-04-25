@@ -355,15 +355,15 @@ function layout:touchReleased(id)
 			self.touchTarget = nil
 			a[1], a[2], a[3], a[4], a[5], a[6] = false, nil, 0, 0, 0, 0
 			return true
-		-- But if there isn't, then find element
-		else
+		-- But if there isn't, and there's scroll, then find element
+		elseif self.scroll.v or self.scroll.h then
 			local elem = self:_internalGetElementByPosition(a[3], a[4])
 
 			if elem then
 				-- Send simultaneous touch pressed and release, in order
 				local tx, ty = self.drawx - elem.x, self.drawy - elem.y
-				elem:touchPressed(a[3] + tx, a[4] + ty, a[3] + tx - (a[5] + tx), a[4] + ty - (a[6] + ty))
-				elem:touchReleased()
+				elem.event:touchPressed(a[3] + tx, a[4] + ty, a[3] + tx - (a[5] + tx), a[4] + ty - (a[6] + ty))
+				elem.event:touchReleased()
 				a[1], a[2], a[3], a[4], a[5], a[6] = false, nil, 0, 0, 0, 0
 				return true
 			end
