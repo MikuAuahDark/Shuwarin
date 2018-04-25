@@ -46,6 +46,7 @@
   <li><a href="../modules/Shuwarin.Platform.html">Shuwarin.Platform</a></li>
   <li><a href="../modules/Shuwarin.Elements.Button.html">Shuwarin.Elements.Button</a></li>
   <li><a href="../modules/Shuwarin.Elements.Text.html">Shuwarin.Elements.Text</a></li>
+  <li><a href="../modules/Shuwarin.Elements.TextInput.html">Shuwarin.Elements.TextInput</a></li>
 </ul>
 
 </div>
@@ -86,11 +87,13 @@ styled similarly to CSS (border, shadow, color, ...)</p>
 
 
 <pre>
-<span class="keyword">local</span> love = <span class="global">require</span>(<span class="string">"love"</span>)
+<span class="comment">-- Example
+</span><span class="keyword">local</span> love = <span class="global">require</span>(<span class="string">"love"</span>)
 <span class="keyword">local</span> Shuwarin = <span class="global">require</span>(<span class="string">"shuwarin"</span>)
 <span class="keyword">local</span> button = <span class="global">require</span>(<span class="string">"shuwarin.elements.button"</span>)
 <span class="keyword">local</span> text = <span class="global">require</span>(<span class="string">"shuwarin.elements.text"</span>)
-<span class="keyword">local</span> layout, mybutton, mytext
+<span class="keyword">local</span> tinput = <span class="global">require</span>(<span class="string">"shuwarin.elements.textinput"</span>)
+<span class="keyword">local</span> layout, mybutton, mytext, mytinput
 
 love.window.setTitle(<span class="string">"Shuwarin☆Drea~min"</span>)
 
@@ -104,6 +107,8 @@ culpa qui officia deserunt mollit anim id est laborum.
 ]]</span>
 
 <span class="keyword">function</span> love.<span class="global">load</span>()
+    <span class="comment">-- Enable key repeat
+</span> love.keyboard.setKeyRepeat(<span class="keyword">true</span>)
     <span class="comment">-- Create new layout.
 </span> layout = Shuwarin.Layout(<span class="number">800</span>, <span class="number">600</span>)
     <span class="comment">-- Create new text object.
@@ -116,12 +121,10 @@ culpa qui officia deserunt mollit anim id est laborum.
 </span> mytext.style:setBoxShadow(<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, {<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0.8</span>})
     <span class="comment">-- Add to layout
 </span> layout:addElement(mytext)
-    <span class="comment">-- Force update element (recalculate)
-</span> mytext:update()
     <span class="comment">-- Create new button with caption "Test Button"
 </span> mybutton = button(<span class="string">"Test Button"</span>)
     <span class="comment">-- Set X position to 25, and Y position to below text element added before + 10px below
-</span> mybutton:setPosition(<span class="number">25</span>, layout:getFreeHeightPosition(<span class="global">select</span>(<span class="number">2</span>, mybutton:getDimensions())) + <span class="number">10</span>)
+</span> mybutton:setPosition(<span class="number">25</span>, layout:getFreeHeightPosition(mybutton.height) + <span class="number">10</span>)
     <span class="comment">-- Add mouse up event handler (triggered when button is clicked)
 </span> mybutton.event:addHandler(<span class="string">"mouseUp"</span>, <span class="keyword">function</span>(self)
         <span class="global">print</span>(<span class="string">"Button clicked"</span>, self)
@@ -132,6 +135,12 @@ culpa qui officia deserunt mollit anim id est laborum.
 </span> mybutton.style:setTextShadow(<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>)
     <span class="comment">-- Add element.
 </span> layout:addElement(mybutton)
+    <span class="comment">-- Create text input, with 500px width and no char limit
+</span> mytinput = tinput(<span class="number">500</span>)
+    <span class="comment">-- Set position
+</span> mytinput:setPosition(<span class="number">25</span>, layout:getFreeHeightPosition(mytinput.height) + <span class="number">10</span>)
+    <span class="comment">-- Add to layout
+</span> layout:addElement(mytinput)
 <span class="keyword">end</span>
 
 <span class="keyword">function</span> love.update(deltaT)
@@ -154,6 +163,18 @@ culpa qui officia deserunt mollit anim id est laborum.
 <span class="keyword">function</span> love.mousereleased()
     <span class="keyword">return</span> layout:touchReleased(<span class="keyword">nil</span>)
 <span class="keyword">end</span>
+
+<span class="keyword">function</span> love.keypressed(key)
+    <span class="keyword">return</span> layout:keyPressed(key)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> love.keyreleased(key)
+    <span class="keyword">return</span> layout:keyReleased(key)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> love.textinput(char)
+    <span class="keyword">return</span> layout:textInput(char)
+<span class="keyword">end</span>
 </pre>
 
 
@@ -162,7 +183,7 @@ culpa qui officia deserunt mollit anim id est laborum.
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2018-04-24 14:45:39 </i>
+<i style="float:right;">Last updated 2018-04-25 22:19:26 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

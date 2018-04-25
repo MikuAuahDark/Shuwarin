@@ -33,6 +33,7 @@ local text = element:extend("Shuwarin.Elements.Text")
 --- Create new text display.
 -- You can pass simple text, or colored text. If you want colored text, please
 -- see [`Text:addf`](https://love2d.org/wiki/Text:addf).
+-- @function Shuwarin.Elements.Text:Text
 -- @tparam string|table txt Text to show.
 -- @tparam boolean newlinetospace Convert new line into space? (only if `txt` is string)
 -- @treturn Shuwarin.Elements.Text Text object.
@@ -67,6 +68,7 @@ function text:update()
 end
 
 --- Text display draw.
+-- @function Shuwarin.Elements.Text:draw
 function text:draw()
 	-- Calculate color
 	local r1, g1, b1, a1 = self.style.color[1], self.style.color[2], self.style.color[3], self.style.color[4] or 1

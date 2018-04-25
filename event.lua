@@ -22,7 +22,8 @@
 -- @module Shuwarin.Event
 -- Events are needed to handle user input. This can range from touch events to
 -- keyboard input (textinput). For touch position, the position is always reported
--- relative to current element.
+-- relative to current element. Note that event is off by default, and you can turn
+-- it on with @{Shuwarin.Event:setEnable}.
 
 local path = string.sub(..., 1, string.len(...) - string.len(".event"))
 local class = require(path..".lib.30log")
@@ -47,7 +48,7 @@ function event:init(element)
 	self.touch = {false, 0, 0, 0, 0}
 
 	-- Keyboard handling
-	self.keyboard = {state = {}, grabInput = false, enableText = false, text = {}}
+	self.keyboard = {state = {}, grabInput = false, enableText = false}
 end
 
 --- Add new event handler.
@@ -160,7 +161,16 @@ end
 function event:keyPressed(key)
 	if not(self.enabled) then return end
 	self.keyboard.state[key] = true
-	return self:_internalCallHandler("keyDown", key)
+	self:_internalCallHandler("keyDown", key)
+
+	-- Erasing?
+	if self.keyboard.enableText then
+		if key == "backspace" then
+			self:_internalCallHandler("inputChanged", "\8") -- Backspace
+		elseif key == "delete" then
+			self:_internalCallHandler("inputChanged", "\127") -- Delete
+		end
+	end
 end
 
 --- Keyboard released callback.
@@ -169,13 +179,7 @@ end
 function event:keyReleased(key)
 	if not(self.enabled) then return end
 	self.keyboard.state[key] = nil
-	self:_internalCallHandler("keyUp", key)
-
-	-- Erasing?
-	if key == "backspace" then
-		table.remove(self.keyboard.text)
-		self:_internalCallHandler("inputChanged")
-	end
+	return self:_internalCallHandler("keyUp", key)
 end
 
 --- Textinput callback.
@@ -183,8 +187,7 @@ end
 -- @tparam string char Character pressed.
 function event:textInput(char)
 	if not(self.enabled) then return end
-	self.keyboard.text[#self.keyboard.text + 1] = char
-	return self:_internalCallHandler("inputChanged")
+	return self:_internalCallHandler("inputChanged", char)
 end
 
 --- Set keyboard input grab.

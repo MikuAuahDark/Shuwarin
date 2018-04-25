@@ -14,4 +14,5 @@ file = {
 	-- Built-in elements
 	"elements/button.lua",
 	"elements/text.lua",
+	"elements/textinput.lua",
 }

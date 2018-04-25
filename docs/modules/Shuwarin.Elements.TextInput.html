@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Shuwarin</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/Shuwarin.html">Shuwarin</a></li>
+  <li><a href="../modules/Shuwarin.Layout.html">Shuwarin.Layout</a></li>
+  <li><a href="../modules/Shuwarin.Element.html">Shuwarin.Element</a></li>
+  <li><a href="../modules/Shuwarin.Event.html">Shuwarin.Event</a></li>
+  <li><a href="../modules/Shuwarin.Style.html">Shuwarin.Style</a></li>
+  <li><a href="../modules/Shuwarin.Platform.html">Shuwarin.Platform</a></li>
+  <li><a href="../modules/Shuwarin.Elements.Button.html">Shuwarin.Elements.Button</a></li>
+  <li><a href="../modules/Shuwarin.Elements.Text.html">Shuwarin.Elements.Text</a></li>
+  <li><strong>Shuwarin.Elements.TextInput</strong></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/README.md.html">README</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Shuwarin.Elements.TextInput</code></h1>
+<p>Simple text input.</p>
+<p> This is basic text input, which should supports some things which available in
+ full-featured text input. You can position the type position with arrow keys
+ (left or right), home button (set to begin) and end button (set to end).</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#textInput:init">textInput:init (width, maxtext)</a></td>
+	<td class="summary">Create new text input.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#textInput:_internalTouchPressed">textInput:_internalTouchPressed ()</a></td>
+	<td class="summary">Internal callback called on touch is pressed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#textInput:_internalKeyPressed">textInput:_internalKeyPressed (key)</a></td>
+	<td class="summary">Internal callback called on key press.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#textInput:_internalInputChanged">textInput:_internalInputChanged (text)</a></td>
+	<td class="summary">Internal callback called on text input.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Elements.TextInput:update">Shuwarin.Elements.TextInput:update (Time)</a></td>
+	<td class="summary">Update text input.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Elements.TextInput:_internalDrawText">Shuwarin.Elements.TextInput:_internalDrawText ()</a></td>
+	<td class="summary">Internal function for drawing to FBO.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Elements.TextInput:draw">Shuwarin.Elements.TextInput:draw ()</a></td>
+	<td class="summary">Text input draw.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shuwarin.Elements.TextInput:getText">Shuwarin.Elements.TextInput:getText ()</a></td>
+	<td class="summary">Get text in the text input.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "textInput:init"></a>
+    <strong>textInput:init (width, maxtext)</strong>
+    </dt>
+    <dd>
+    Create new text input.
+ The text input height is automatically adjusted based
+ on used font.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">width</span>
+            <span class="types"><span class="type">number</span></span>
+         Text input width.
+        </li>
+        <li><span class="parameter">maxtext</span>
+            <span class="types"><span class="type">number</span></span>
+         Maximum character which can present in the text input (or nil/0 for no limit)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">Shuwarin.Elements.TextInput</span></span>
+        Text input object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "textInput:_internalTouchPressed"></a>
+    <strong>textInput:_internalTouchPressed ()</strong>
+    </dt>
+    <dd>
+    Internal callback called on touch is pressed.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "textInput:_internalKeyPressed"></a>
+    <strong>textInput:_internalKeyPressed (key)</strong>
+    </dt>
+    <dd>
+    Internal callback called on key press.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+        If we press left arrow, move it to left
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "textInput:_internalInputChanged"></a>
+    <strong>textInput:_internalInputChanged (text)</strong>
+    </dt>
+    <dd>
+    Internal callback called on text input.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+        Check if text is backspace
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Elements.TextInput:update"></a>
+    <strong>Shuwarin.Elements.TextInput:update (Time)</strong>
+    </dt>
+    <dd>
+    Update text input.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Time</span>
+            <span class="types"><span class="type">deltaT</span></span>
+         passed since last frame, in seconds.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Elements.TextInput:_internalDrawText"></a>
+    <strong>Shuwarin.Elements.TextInput:_internalDrawText ()</strong>
+    </dt>
+    <dd>
+    Internal function for drawing to FBO.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Elements.TextInput:draw"></a>
+    <strong>Shuwarin.Elements.TextInput:draw ()</strong>
+    </dt>
+    <dd>
+    Text input draw.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shuwarin.Elements.TextInput:getText"></a>
+    <strong>Shuwarin.Elements.TextInput:getText ()</strong>
+    </dt>
+    <dd>
+    Get text in the text input.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        Text
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2018-04-25 22:19:26 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

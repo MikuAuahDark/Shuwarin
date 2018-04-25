@@ -144,10 +144,9 @@ function layout:draw()
 	love.graphics.setCanvas(self.fbo)
 	love.graphics.clear(0, 0, 0, 0)
 	love.graphics.origin()
-	love.graphics.translate(self.drawx, self.drawy)
+	love.graphics.translate(-self.drawx, -self.drawy)
 
 	-- Iterate elements
-	local lastx, lasty = 0, 0
 	local drawx, drawy = self:getDisplayableDimensions()
 	for i = 1, #self.elements do
 		local elem = self.elements[i]
@@ -157,13 +156,13 @@ function layout:draw()
 		-- This is probably hits up the CPU but will gives less stress to the GPU
 		if lx + elem.width >= 0 and ly + elem.height >= 0 and elem.x < drawx and elem.y < drawy then
 			-- Draw element
-			lastx, lasty = elem.x - lastx, elem.y - lasty
-			love.graphics.translate(lastx, lasty)
+			love.graphics.translate(elem.x, elem.y)
 			elem:_internalDraw()
+			love.graphics.translate(-elem.x, -elem.y)
 		end
 	end
 	-- Reset to 0,0
-	love.graphics.translate(-lastx, -lasty)
+	love.graphics.translate(self.drawx, self.drawy)
 
 	-- If scroll, draw it too
 	if self.scroll.v then self.scroll.v:_internalDraw() end
@@ -256,7 +255,15 @@ function layout:touchPressed(id, x, y)
 	a[1], a[2], a[3], a[4], a[5], a[6] = true, id, x, y, x, y
 
 	if not(self.scroll.v and self.scroll.h) then
-		-- No scroll data. Try to send touch input directly
+		-- No scroll data.
+		-- Clear keyboard grab for all elements.
+		local elem2 = self:_internalGetElement()
+		while elem2 do
+			elem2.event:setKeyboardGrab(false)
+			elem2 = self:_internalGetElement()
+		end
+
+		-- Try to send touch input directly
 		if not(self.touchTarget) then
 			local elem = self:_internalGetElementByPosition(x, y)
 			if elem then

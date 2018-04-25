@@ -39,11 +39,15 @@ Example
 -------
 
 ```lua
+-- Example
 local love = require("love")
 local Shuwarin = require("shuwarin")
 local button = require("shuwarin.elements.button")
 local text = require("shuwarin.elements.text")
-local layout, mybutton, mytext
+local tinput = require("shuwarin.elements.textinput")
+local layout, mybutton, mytext, mytinput
+
+love.window.setTitle("Shuwarin☆Drea~min")
 
 local placeholderText = [[
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -55,6 +59,8 @@ culpa qui officia deserunt mollit anim id est laborum.
 ]]
 
 function love.load()
+	-- Enable key repeat
+	love.keyboard.setKeyRepeat(true)
 	-- Create new layout.
 	layout = Shuwarin.Layout(800, 600)
 	-- Create new text object.
@@ -70,7 +76,7 @@ function love.load()
 	-- Create new button with caption "Test Button"
 	mybutton = button("Test Button")
 	-- Set X position to 25, and Y position to below text element added before + 10px below
-	mybutton:setPosition(25, layout:getFreeHeightPosition(select(2, mybutton:getDimensions())) + 10)
+	mybutton:setPosition(25, layout:getFreeHeightPosition(mybutton.height) + 10)
 	-- Add mouse up event handler (triggered when button is clicked)
 	mybutton.event:addHandler("mouseUp", function(self)
 		print("Button clicked", self)
@@ -81,6 +87,12 @@ function love.load()
 	mybutton.style:setTextShadow(2, 2, 2)
 	-- Add element.
 	layout:addElement(mybutton)
+	-- Create text input, with 500px width and no char limit
+	mytinput = tinput(500)
+	-- Set position
+	mytinput:setPosition(25, layout:getFreeHeightPosition(mytinput.height) + 10)
+	-- Add to layout
+	layout:addElement(mytinput)
 end
 
 function love.update(deltaT)
@@ -102,5 +114,17 @@ end
 
 function love.mousereleased()
 	return layout:touchReleased(nil)
+end
+
+function love.keypressed(key)
+	return layout:keyPressed(key)
+end
+
+function love.keyreleased(key)
+	return layout:keyReleased(key)
+end
+
+function love.textinput(char)
+	return layout:textInput(char)
 end
 ```
